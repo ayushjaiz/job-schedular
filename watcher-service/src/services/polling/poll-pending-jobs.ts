@@ -3,10 +3,11 @@ import { addEmailToQueue, JobPayload } from "../email-queue/queue";
 
 /**
  * Polls for pending jobs that are scheduled to run at or before the current time.
- * For each pending job, marks it as RUNNING, enqueues it for processing (e.g., sending an email),
+ * For each pending job, marks it as RUNNING, adds it to the email queue for processing,
  * and then updates its status to COMPLETED on success, or handles errors by decrementing retries_left.
  */
 export const pollPendingJobs = async (): Promise<void> => {
+    console.log("Polling pending jobs...");
     try {
         // Find all jobs with a status of PENDING and a scheduled_time less than or equal to now.
         const pendingJobs = await JobModel.find({
@@ -46,5 +47,7 @@ export const pollPendingJobs = async (): Promise<void> => {
     } catch (err) {
         console.error("Error polling pending jobs:", err);
         throw err;
+    }finally{
+        console.log("Polling complete");
     }
 };

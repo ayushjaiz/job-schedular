@@ -1,4 +1,4 @@
-# USER MANAGEMENT
+# JOB SCHEDULAR
 
 #### This project focuses on Job Scheduling System coupled Admin Panel that distributes Job Scheduling with support of Fault Tolerance.
 
@@ -47,7 +47,7 @@
 - **jsonwebtoken**: Implement authentication and role based access control
 - **nodemailer**: Sending Email via Gmail SMTP
 - **bullmq**: Queue the email jobs
-- **agenda**: Read jobs every minute
+- **node-cron**: Read jobs every minute
 
 ---
 
@@ -133,8 +133,11 @@
 ### Why MongoDB?
 
 - Flexibility to accomodate changes in schema
+- Faster read/write operations
 - Easy documentation
-- Support for agenda to poll to read db every minute
+
+
+
 
 ### Why Redis?
 
@@ -153,10 +156,10 @@
 - Bullmq is supported over redis.
 - Bullmq provides inbuilt support to distribute jobs to workers
 
-## Agenda schedular
+## Node cron
 
 - It is used to poll mongo db every minute as see there are pending job
-- Preferred agena over bull mq because I just needed to poll the database
+- Preferred node-cron as polling db is a lightweight process
 
 ---
 

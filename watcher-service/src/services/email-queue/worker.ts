@@ -48,12 +48,11 @@ export const initializeWorker = () => {
         }
     );
 
-    // Handle queue events
     emailQueueEvents.on("completed", ({ jobId }) => {
-        console.log(`🎉 Job Completed: ${jobId}`);
+        console.log(`Job Completed: ${jobId}`);
     });
 
     emailQueueEvents.on("failed", ({ jobId, failedReason }) => {
-        console.error(`⚠️ Job Failed: ${jobId}, Reason: ${failedReason}`);
+        console.error(`Job Failed: ${jobId}, Reason: ${failedReason}`);
     });
 };

@@ -12,14 +12,12 @@ export const registerUser = async (req: Request, res: Response) => {
             return;
         }
 
-        // Check if user already exists
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             res.status(400).send({ status: false, message: 'Email is already registered' });
             return;
         }
 
-        // Create new user
         const user = new UserModel({ email, password });
         await user.save();
 
@@ -33,14 +31,12 @@ export const loginUser = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
 
-        // Check if user exists
         const user = await UserModel.findOne({ email });
         if (!user) {
             res.status(401).send({ status: false, message: 'Invalid email or password' });
             return;
         }
 
-        // Validate password
         const isPasswordValid = await user.comparePassword(password);
         if (!isPasswordValid) {
             res.status(401).send({ status: false, message: 'Invalid email or password' });

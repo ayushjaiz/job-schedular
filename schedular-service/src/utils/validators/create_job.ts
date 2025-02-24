@@ -5,7 +5,7 @@ export const createJobValidator = [
         .notEmpty()
         .withMessage("Scheduled time is required.")
         .isISO8601()
-        .withMessage("Scheduled time must be a valid date (ISO8601 format)."),
+        .withMessage("Scheduled time must be a valid date."),
 
     body("email_id")
         .notEmpty()
