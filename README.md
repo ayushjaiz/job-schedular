@@ -165,7 +165,9 @@
 
 ## Deployment
 
-This project is deployed on render : (not deployed yet)
+This project is deployed on render : https://job-schedular.onrender.com
+
+Watcher-service running on: https://job-schedular-1.onrender.com
 
 ---
 
